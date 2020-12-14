@@ -4,7 +4,7 @@ from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
 
-SLEEP_TIME = 0.1
+SLEEP_TIME = 0.15
 scoreboard = Scoreboard()
 # decorates the screen
 my_screen = Screen()
@@ -50,5 +50,9 @@ while is_game_on:
         scoreboard.game_over()
 
     # detects collision with body
+    for snakes in my_snake.snake_segment[1:]:
+        if my_snake.head.distance(snakes) < 10:
+            is_game_on = False
+            scoreboard.game_over()
 
 my_screen.exitonclick()
