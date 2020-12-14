@@ -23,11 +23,19 @@ class Snake:
     # and moves each segment to their initial position
     def snake_build(self):
         for position in SNAKE_POSITIONS:
-            new_segment = Turtle(shape="square")
-            new_segment.pu()
-            new_segment.color("white")
-            new_segment.goto(position)
-            self.snake_segment.append(new_segment)
+            self.add_segment(position)
+
+    # add segments to current snake
+    def add_segment(self, position):
+        new_segment = Turtle(shape="square")
+        new_segment.pu()
+        new_segment.color("white")
+        new_segment.goto(position)
+        self.snake_segment.append(new_segment)
+
+    # extends the snake length by adding to the last segment
+    def extend(self):
+        self.add_segment(self.snake_segment[-1].pos())
 
     # makes the last segment of the snake to take the position of the preceding segment and so on.
     # In this way, the full segment of the snake moves in accordance by 20 pace together
@@ -55,6 +63,3 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.seth(RIGHT)
-
-
-
