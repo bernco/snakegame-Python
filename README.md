@@ -14,4 +14,4 @@ OOP for snake game using turtle graphics.
 <b /> body collision is also game over
 
 <b /> enjoy playing!
-![](Snake-anim.gif)
+![](Snake-animi.gif)
