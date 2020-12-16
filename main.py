@@ -41,18 +41,18 @@ while is_game_on:
     if my_snake.head.distance(food) < 15:
         food.new_food()
         my_snake.extend()
+        scoreboard.increase_score()
         scoreboard.score_keeper()
 
     # detects collision with wall
     if my_snake.head.xcor() > 280 or my_snake.head.xcor() < -280 or my_snake.head.ycor() > 280 \
             or my_snake.head.ycor() < -280:
-        is_game_on = False
-        scoreboard.game_over()
+        scoreboard.reset_score()
+        my_snake.snake_reset()
 
     # detects collision with body
     for snakes in my_snake.snake_segment[1:]:
         if my_snake.head.distance(snakes) < 10:
-            is_game_on = False
-            scoreboard.game_over()
-
+            scoreboard.reset_score()
+            my_snake.snake_reset()
 my_screen.exitonclick()
